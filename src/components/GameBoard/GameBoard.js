@@ -1,6 +1,16 @@
 import styles from './GameBoard.module.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { infoActions } from '../../store'
 
 export const GameBoard = () => {
+    const rulesActive =  useSelector(state => state.info.isActive)
+    const dispatch = useDispatch()
+
+    const showRulesHandler = () => {
+        dispatch(infoActions.activeState())
+
+    }
+
 	return (
 		<main className={styles['game-board']}>
 			<div className={styles.triangle}>
@@ -21,7 +31,7 @@ export const GameBoard = () => {
 				</button>
 			</div>
             <div className={styles.reset}>
-                <button>Rules</button>
+                <button onClick={showRulesHandler}>Rules</button>
             </div>
 		</main>
 	)
