@@ -58,7 +58,7 @@
 	top: 27%;
 	left: 25%;
 	width: 51px;
-	height: 58px;
+	height: 60px;
 	z-index: 1000;
 	background-repeat: no-repeat;
 	background-size: 70%;
@@ -74,4 +74,27 @@
 
 .rock {
 	background-image: url('../../assets/icon-rock.svg');
+}
+
+@media (min-width: 576px) {
+	.box {
+		width: 120px;
+		height: 120px;
+	}
+
+	.icon {
+		background-size: 85%;
+	}
+}
+
+@media (min-width: 768px) {
+	.box {
+		width: 130px;
+		height: 130px;
+	}
+
+	.icon {
+		top: 25%;
+		background-size: 100%;
+	}
 }

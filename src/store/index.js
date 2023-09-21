@@ -16,7 +16,7 @@ const infoSlice = createSlice({
             state.score += 1
         },
 
-        activeState(state, action) {
+        activeState(state, action) { //  rules open/close
             state.isActive = !state.isActive
         },
 
@@ -24,8 +24,12 @@ const infoSlice = createSlice({
             state.isClicked = !state.isClicked
         },
 
-        playerChoiceState(state, action) { // Handles player's choice
+        playerChoiceState(state, action) { // Handle player's choice
             state.playerPick = action.payload
+        },
+
+        computerChoiceState(state, action) { // Handle computer's choice
+            state.computerPick = action.payload
         }
     }
 })

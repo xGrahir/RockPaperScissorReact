@@ -2,7 +2,7 @@ import styles from './GameBoard.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { infoActions } from '../../store'
 import { Choices } from '../Choices/Choices'
-import { RulesButton } from '../Rules/RulesButton'
+import { GameBoardResult } from '../GameBoardResult/GameBoardResult'
 
 export const GameBoard = () => {
 	const choices = [
@@ -12,11 +12,7 @@ export const GameBoard = () => {
 	]
 
 	const dispatch = useDispatch()
-	// const choice = useSelector(state => state.info.yourPick)
-
-	// const showRulesHandler = () => {
-	// 	dispatch(infoActions.activeState())
-	// }
+	const isButtonClicked = useSelector(state => state.info.isClicked)
 
 	const chooseHandler = e => {
 		dispatch(infoActions.playerChoiceState(e.target.value))
@@ -27,9 +23,7 @@ export const GameBoard = () => {
 
 	return (
 		<main className={styles['game-board']}>
-			<div className={styles.triangle}>
-				{toChoose}
-			</div>
+			{!isButtonClicked ? <div className={styles.triangle}>{toChoose}</div> : <GameBoardResult />}
 		</main>
 	)
 }

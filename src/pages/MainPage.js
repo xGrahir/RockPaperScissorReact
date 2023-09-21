@@ -6,12 +6,12 @@ import { Rules } from '../components/Rules/Rules'
 import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector'
 
 export const MainPage = () => {
-	const isButtonClicked = useSelector(state => state.info.isClicked)
+	
 
 	return (
 		<>
 			<ScoreBoard />
-			{isButtonClicked ? <GameBoardResult /> : <GameBoard />}
+			<GameBoard /> 
 			<Rules />
 		</>
 	)
