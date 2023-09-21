@@ -1,38 +1,35 @@
 import styles from './GameBoard.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { infoActions } from '../../store'
+import { Choices } from '../Choices/Choices'
+import { RulesButton } from '../Rules/RulesButton'
 
 export const GameBoard = () => {
-    const rulesActive =  useSelector(state => state.info.isActive)
-    const dispatch = useDispatch()
+	const choices = [
+		{ name: 'paper', id: 0 },
+		{ name: 'scissors', id: 1 },
+		{ name: 'rock', id: 2 },
+	]
 
-    const showRulesHandler = () => {
-        dispatch(infoActions.activeState())
+	const dispatch = useDispatch()
+	// const choice = useSelector(state => state.info.yourPick)
 
-    }
+	// const showRulesHandler = () => {
+	// 	dispatch(infoActions.activeState())
+	// }
+
+	const chooseHandler = e => {
+		dispatch(infoActions.playerChoiceState(e.target.value))
+		dispatch(infoActions.gameState())
+	}
+
+	const toChoose = choices.map(choice => <Choices key={choice.id} choice={choice.name} onChoose={chooseHandler} />)
 
 	return (
 		<main className={styles['game-board']}>
 			<div className={styles.triangle}>
-				<button className={`${styles['paper-box']} ${styles.box}`}>
-					<div className={`${styles['gradient-box']} ${styles['gradient-paper']}`}>
-						<div className={`${styles.paper} ${styles.icon}`}></div>
-					</div>
-				</button>
-				<button className={`${styles['scissors-box']} ${styles.box}`}>
-					<div className={`${styles['gradient-box']} ${styles['gradient-scissors']}`}>
-						<div className={`${styles.scissors} ${styles.icon}`}></div>
-					</div>
-				</button>
-                <button className={`${styles['rock-box']} ${styles.box}`}>
-					<div className={`${styles['gradient-box']} ${styles['gradient-rock']}`}>
-						<div className={`${styles.rock} ${styles.icon}`}></div>
-					</div>
-				</button>
+				{toChoose}
 			</div>
-            <div className={styles.reset}>
-                <button onClick={showRulesHandler}>Rules</button>
-            </div>
 		</main>
 	)
 }

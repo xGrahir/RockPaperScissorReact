@@ -2,7 +2,10 @@ import {configureStore, createSlice} from '@reduxjs/toolkit'
 
 const initialSettings = {
     score: 0,
-    isActive: false
+    playerPick: null,
+    computerPick: null,
+    isActive: false,
+    isClicked: false
 }
 
 const infoSlice = createSlice({
@@ -15,6 +18,14 @@ const infoSlice = createSlice({
 
         activeState(state, action) {
             state.isActive = !state.isActive
+        },
+
+        gameState(state, action) { // If player clicked icon
+            state.isClicked = !state.isClicked
+        },
+
+        playerChoiceState(state, action) { // Handles player's choice
+            state.playerPick = action.payload
         }
     }
 })

@@ -1,7 +1,12 @@
 .header {
     display: flex;
     justify-content: center;
-    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
 }
 
 .frame {

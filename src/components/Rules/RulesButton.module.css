@@ -1,0 +1,26 @@
+.reset {
+    position: absolute;
+    bottom: 5%;
+}
+
+.reset button {
+    padding: 0.5rem 1.7rem 0.4rem;
+    background: none;
+    border: 3px solid rgba(255, 255, 255, 0.348);
+    border-radius: 8px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.reset button:hover {
+    border: 3px solid rgba(255, 255, 255, 0.596);
+}
+
+@media (min-width: 768px) {
+    .reset {
+        right: 10%;
+    }
+}
