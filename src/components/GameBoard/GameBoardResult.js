@@ -7,7 +7,9 @@ import { useState, useEffect } from 'react'
 
 export const GameBoardResult = () => {
 	const [isComputerChoose, setIsComputerChoose] = useState(false)
-	const [winState, setWinState] = useState()
+	const [winComunicate, setWinComunicate] = useState()
+	const [playerWin, setPlayerWin] = useState(false)
+	const [computerWin, setComputerWin] = useState(false)
 	const dispatch = useDispatch()
 
 	const player = useSelector(state => state.info.playerPick)
@@ -15,15 +17,17 @@ export const GameBoardResult = () => {
 
 	const winStateHandler = () => {
 		if (player === computer) {
-			setWinState('draw')
+			setWinComunicate('draw')
 		} else if (
 			(player === 'paper' && computer === 'scissors') ||
 			(player === 'rock' && computer === 'paper') ||
 			(player === 'scissors' && computer === 'rock')
 		) {
-			setWinState('lose')
+			setWinComunicate('You lose')
+			setComputerWin(true)
 		} else {
-			setWinState('win')
+			setWinComunicate('You win')
+			setPlayerWin(true)
 			dispatch(infoActions.addPoint())
 		}
 	}
@@ -34,9 +38,9 @@ export const GameBoardResult = () => {
 
 	useEffect(() => {
 		setTimeout(() => {
-			winStateHandler()
 			setIsComputerChoose(true)
-		}, 1000)
+			winStateHandler()
+		}, 500)
 	}, [])
 
 	return (
@@ -45,21 +49,21 @@ export const GameBoardResult = () => {
 				<div className={styles['result-board']}>
 					<div className={styles.picks}>
 						<div className={styles.pick}>
-							<Choice choice={player} />
+							<Choice choice={player} winner={playerWin}/>
 							<h3>You picked</h3>
 						</div>
 						<div className={styles.pick}>
 							{!isComputerChoose ? (
 								<div className={`${styles['computer-picking']}`}></div>
 							) : (
-								<Choice choice={computer} />
+								<Choice choice={computer} winner={computerWin}/>
 							)}
 							<h3>{!isComputerChoose ? 'Computer is picking' : 'Computer picked'}</h3>
 						</div>
 					</div>
 					{isComputerChoose ? (
 						<div className={styles.info}>
-							<h3>You {winState}</h3>
+							<h3>{winComunicate}</h3>
 							<button onClick={gameResetHandler}>Play Again</button>
 						</div>
 					) : (

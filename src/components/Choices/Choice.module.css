@@ -64,38 +64,40 @@
 	z-index: -100;
 } */
 
-.smth2 {
+.overlay {
+	margin-top: 0.5rem;
+}
+
+.winner {
 	position: relative;
 }
 
-.smth {
-	position: relative;
-}
-
-.smth:before {
+.winner:before {
 	position: absolute;
 	content: '';
-	width: 125%;
-	height: 125%;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	border-radius: 50%;
-	background-color: rgba(255, 255, 255, 0.06);
 	z-index: -100;
 }
 
-.smth2:before {
-	position: absolute;
-	content: '';
-	width: 160%;
-	height: 160%;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	border-radius: 50%;
-	background-color: rgba(255, 255, 255, 0.05);
-	z-index: -100;
+.win::before {
+	background-color: rgba(255, 255, 255, 0.04);
+	width: 130%;
+	height: 130%;
+}
+
+.win2::before {
+	background-color: rgba(255, 255, 255, 0.035);
+	width: 180%;
+	height: 180%;
+}
+
+.win3::before {
+	background-color: rgba(255, 255, 255, 0.03);
+	width: 250%;
+	height: 250%;
 }
 
 .icon {
@@ -130,16 +132,50 @@
 	.icon {
 		background-size: 85%;
 	}
+
+	.win::before {
+		width: 150%;
+		height: 150%;
+	}
+	
+	.win2::before {
+		width: 210%;
+		height: 210%;
+	}
+	
+	.win3::before {
+		width: 280%;
+		height: 280%;
+	}
+
+	.overlay {
+		margin-top: 1rem;
+	}
 }
 
 @media (min-width: 768px) {
 	.box {
-		width: 130px;
-		height: 130px;
+		width: 135px;
+		height: 135px;
 	}
 
 	.icon {
 		top: 25%;
 		background-size: 100%;
+	}
+
+	.win::before {
+		width: 170%;
+		height: 170%;
+	}
+	
+	.win2::before {
+		width: 260%;
+		height: 260%;
+	}
+	
+	.win3::before {
+		width: 350%;
+		height: 350%;
 	}
 }

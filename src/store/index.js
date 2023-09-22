@@ -14,6 +14,7 @@ const infoSlice = createSlice({
 	reducers: {
 		addPoint(state, action) {
 			state.score += 1
+			localStorage.setItem('score', state.score)
 		},
 
 		activeState(state, action) {
@@ -38,7 +39,12 @@ const infoSlice = createSlice({
 
         reset(state, action) {
             return {...initialSettings, score: state.score }
-        }
+        },
+
+		getBackPoints(state, action) {
+			return {...initialSettings, score: action.payload}
+		}
+
 	},
 })
 

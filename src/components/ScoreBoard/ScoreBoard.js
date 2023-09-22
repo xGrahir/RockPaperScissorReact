@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { RulesButton } from '../Rules/RulesButton'
 
 export const ScoreBoard = () => {
-	const score = useSelector(state => state.info.score)
+	let score = useSelector(state => state.info.score)
 
 	return (
 		<header className={styles.header}>
