@@ -1,4 +1,4 @@
-import styles from '../GameBoard/GameBoard.module.css'
+import styles from '../GameBoard/GameBoardPick.module.css'
 
 export const Choices = ({ choice, onChoose }) => {
 

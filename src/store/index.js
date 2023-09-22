@@ -1,41 +1,49 @@
-import {configureStore, createSlice} from '@reduxjs/toolkit'
+import { configureStore, createSlice } from '@reduxjs/toolkit'
 
 const initialSettings = {
-    score: 0,
-    playerPick: null,
-    computerPick: null,
-    isActive: false,
-    isClicked: false
+	score: 0,
+	playerPick: null,
+	computerPick: null,
+	isActive: false,
+	isClicked: false,
 }
 
 const infoSlice = createSlice({
-    name: 'info',
-    initialState: initialSettings,
-    reducers: {
-        addPoint(state, action) {
-            state.score += 1
-        },
+	name: 'info',
+	initialState: initialSettings,
+	reducers: {
+		addPoint(state, action) {
+			state.score += 1
+		},
 
-        activeState(state, action) { //  rules open/close
-            state.isActive = !state.isActive
-        },
+		activeState(state, action) {
+			//  rules open/close
+			state.isActive = !state.isActive
+		},
 
-        gameState(state, action) { // If player clicked icon
-            state.isClicked = !state.isClicked
-        },
+		gameState(state, action) {
+			// If player clicked icon
+			state.isClicked = !state.isClicked
+		},
 
-        playerChoiceState(state, action) { // Handle player's choice
-            state.playerPick = action.payload
-        },
+		playerChoiceState(state, action) {
+			// Handle player's choice
+			state.playerPick = action.payload
+		},
 
-        computerChoiceState(state, action) { // Handle computer's choice
-            state.computerPick = action.payload
+		computerChoiceState(state, action) {
+			// Handle computer's choice
+			state.computerPick = action.payload
+		},
+
+        reset(state, action) {
+            return {...initialSettings, score: state.score }
         }
-    }
+	},
 })
 
 const store = configureStore({
-    reducer: {info: infoSlice.reducer}
+	reducer: { info: infoSlice.reducer },
 })
 
 export const infoActions = infoSlice.actions
