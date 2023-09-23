@@ -28,15 +28,15 @@
 }
 
 .gradient-paper {
-	box-shadow: 0px 6px 0px rgb(36, 51, 125);
+	box-shadow: 0px 8px 0px rgb(36, 51, 125);
 }
 
 .gradient-scissors {
-	box-shadow: 0 6px 0 rgb(158, 106, 9);
+	box-shadow: 0 8px 0 rgb(158, 106, 9);
 }
 
 .gradient-rock {
-	box-shadow: 0 6px 0 rgb(138, 29, 49);
+	box-shadow: 0 8px 0 rgb(138, 29, 49);
 }
 
 .gradient-box::before {
@@ -48,7 +48,7 @@
 	left: 0;
 	background: rgb(255, 255, 255);
 	border-radius: inherit;
-	box-shadow: 0px 4px 1px rgba(0, 0, 0, 0.33) inset;
+	box-shadow: 0px 8px 1px rgba(0, 0, 0, 0.33) inset;
 	z-index: -1;
 }
 
